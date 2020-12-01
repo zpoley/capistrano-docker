@@ -20,7 +20,7 @@ namespace :docker do
   end
 
   task :current_revision do
-    invoke "#{fetch(:scm)}:set_current_revision"
+    invoke "#{fetch(:scm_name)}:set_current_revision"
   end
 
   def build_command
