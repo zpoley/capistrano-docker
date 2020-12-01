@@ -25,6 +25,9 @@ namespace :docker do
 
   def build_command
     cmd = ["build"]
+    if fetch(:docker_buildtarget)
+      cmd << "--target #{fetch(:docker_buildtarget)}"
+    end
     cmd << "-t #{fetch(:docker_image_full)}"
     cmd << "-f `pwd -P`/#{fetch(:docker_dockerfile)}"
     cmd << "--pull" if fetch(:docker_pull) == true
