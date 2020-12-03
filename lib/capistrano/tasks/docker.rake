@@ -63,8 +63,8 @@ end
 
 namespace :load do
   task :defaults do
-    set :docker_current_container,    -> { "#{fetch(:application)}_#{fetch(:current_revision)}" }
-    set :docker_previous_container,   -> { "#{fetch(:application)}_#{fetch(:previous_revision)}" }
+    set :docker_current_container,    -> { "#{fetch(:application)}-#{fetch(:stage)}-#{fetch(:current_revision)}" }
+    set :docker_previous_container,   -> { "#{fetch(:application)}-#{fetch(:stage)}-#{fetch(:previous_revision)}" }
     set :docker_role,                 -> { :web }
     set :docker_pull,                 -> { false }
     set :docker_dockerfile,           -> { "Dockerfile" }
@@ -74,7 +74,7 @@ namespace :load do
     set :docker_restart_policy,       -> { "always" }
     set :docker_links,                -> { [] }
     set :docker_labels,               -> { [] }
-    set :docker_image,                -> { "#{fetch(:application)}_#{fetch(:stage)}" }
+    set :docker_image,                -> { "#{fetch(:application)}-#{fetch(:stage)}" }
     set :docker_image_full,           -> { [fetch(:docker_image), fetch(:current_revision)].join(":") }
     set :docker_apparmor_profile,     -> { nil }
     set :docker_additional_options,   -> { "" }
