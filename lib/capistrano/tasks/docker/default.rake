@@ -23,6 +23,13 @@ namespace :docker do
       task :build do
         on roles(fetch(:docker_role)) do
           within release_path do
+            if fetch(:docker_buildenv)
+              buildenv = fetch(:docker_buildenv)
+              buildenv.split(" ").each do |piece|
+                pieces = piece.split("=")
+                ENV[pieces[0]] = pieces[1]
+              end
+            end
             execute :docker, build_command
           end
         end
