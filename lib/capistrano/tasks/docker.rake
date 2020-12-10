@@ -80,7 +80,7 @@ namespace :load do
     set :docker_additional_options,   -> { "" }
     set :docker_copy_data,            -> { [] }
     set :docker_pass_env,             -> { [] }
-    set :docker_port,                 -> { [] }
+    set :docker_port,                 -> { nil }
     set :docker_cpu_quota,            -> { nil }
     set :docker_clean_before_run,      -> { false }
 

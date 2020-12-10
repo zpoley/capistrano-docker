@@ -117,8 +117,8 @@ namespace :docker do
 
     cmd << "--restart #{fetch(:docker_restart_policy)}" unless fetch(:docker_restart_policy).nil?
 
-    fetch(:docker_port).each do |port|
-      cmd << port
+    if fetch(:docker_port)
+      cmd << fetch(:docker_port)
     end
 
     cmd << fetch(:docker_additional_options)
