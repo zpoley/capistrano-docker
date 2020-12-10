@@ -119,6 +119,10 @@ namespace :docker do
     cmd << fetch(:docker_additional_options)
     cmd << fetch(:docker_image_full)
 
+    if fetch(:docker_run_command)
+      cmd << "#{fetch(:docker_run_command)}"
+    end
+
     cmd.join(" ")
   end
 end
