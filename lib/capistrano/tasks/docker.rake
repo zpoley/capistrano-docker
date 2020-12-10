@@ -53,6 +53,7 @@ namespace :docker do
     cmd << "--security-opt apparmor:#{fetch(:docker_apparmor_profile)}" unless fetch(:docker_apparmor_profile).nil?
 
     cmd << fetch(:docker_additional_options)
+    cmd << fetch(:docker_additional_task_options)
     cmd << fetch(:docker_image_full)
 
     cmd << command
@@ -78,6 +79,7 @@ namespace :load do
     set :docker_image_full,           -> { [fetch(:docker_image), fetch(:current_revision)].join(":") }
     set :docker_apparmor_profile,     -> { nil }
     set :docker_additional_options,   -> { "" }
+    set :docker_additional_task_options,   -> { "--rm" }
     set :docker_copy_data,            -> { [] }
     set :docker_pass_env,             -> { [] }
     set :docker_port,                 -> { nil }
