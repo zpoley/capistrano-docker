@@ -77,7 +77,7 @@ namespace :docker do
   end
 
   def old_containers
-    cmd = %(docker ps -f "name=#{fetch(:application)}_" --format '{{.ID}} {{.Image}} {{.Label "git.revision.id"}}')
+    cmd = %(docker ps -f "name=#{fetch(:application)}-" --format '{{.ID}} {{.Image}} {{.Label "git.revision.id"}}')
     resp = capture(cmd).split("\n").map { |x| x.split(" ") }
     resp.select { |a| a[1].index("#{fetch(:docker_image)}")}
   end
