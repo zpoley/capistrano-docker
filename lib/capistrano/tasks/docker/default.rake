@@ -116,6 +116,11 @@ namespace :docker do
     cmd << "--label=git.revision.id=#{fetch(:current_revision)}"
 
     cmd << "--restart #{fetch(:docker_restart_policy)}" unless fetch(:docker_restart_policy).nil?
+
+    fetch(:docker_port).each do |port|
+      cmd << port
+    end
+
     cmd << fetch(:docker_additional_options)
     cmd << fetch(:docker_image_full)
 
