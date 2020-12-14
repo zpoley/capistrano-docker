@@ -37,7 +37,7 @@ namespace :docker do
 
       task :run do
         on roles(fetch(:docker_role)) do
-          invoke 'docker:deploy:default:clean_current' # if running?
+          invoke 'docker:deploy:default:clean_current' if running?
           execute :docker, run_command
         end
       end

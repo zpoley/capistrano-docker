@@ -42,6 +42,6 @@ namespace :docker do
   end
 
   def stop_container(container_name)
-    "docker stop #{container_name} 2> /dev/null || true"
+    "docker stop #{container_name}"
   end
 end
