@@ -66,6 +66,7 @@ namespace :load do
   task :defaults do
     set :docker_current_container,    -> { "#{fetch(:application)}-#{fetch(:stage)}-#{fetch(:current_revision)}" }
     set :docker_previous_container,   -> { "#{fetch(:application)}-#{fetch(:stage)}-#{fetch(:previous_revision)}" }
+    set :docker_log,                 -> { true }
     set :docker_role,                 -> { :web }
     set :docker_pull,                 -> { false }
     set :docker_dockerfile,           -> { "Dockerfile" }

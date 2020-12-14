@@ -128,6 +128,10 @@ namespace :docker do
       cmd << "#{fetch(:docker_run_command)}"
     end
 
+    if fetch(:docker_log)
+      cmd << "> #{fetch(:deploy_to)}/shared/log/#{fetch(:docker_role)}.log"
+    end
+
     cmd.join(" ")
   end
 end
