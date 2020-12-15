@@ -31,7 +31,7 @@ namespace :docker do
               end
             end
             execute :env
-            execute :docker, build_command
+            execute :docker_buildenv, :docker, build_command
           end
         end
       end
