@@ -30,6 +30,7 @@ namespace :docker do
                 ENV[pieces[0]] = pieces[1]
               end
             end
+            execute :env
             execute :docker, build_command
           end
         end
@@ -126,10 +127,6 @@ namespace :docker do
 
     if fetch(:docker_run_command)
       cmd << "#{fetch(:docker_run_command)}"
-    end
-
-    if fetch(:docker_log)
-      cmd << "> #{fetch(:deploy_to)}/shared/log/#{fetch(:docker_role)}.log"
     end
 
     cmd.join(" ")
